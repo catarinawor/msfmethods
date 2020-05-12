@@ -1,0 +1,96 @@
+---
+title: "Study of MSF methods"
+author: "Catarina Wor"
+affiliation: "DFO"
+abstract:
+thanks:
+keywords:
+date: \today
+output:
+  pdf_document:
+    highlight: default
+    citation_package:
+    keep_tex: false
+    fig_caption: true
+    latex_engine: pdflatex
+fontsize: 11pt
+geometry: margin=1in
+bibliography: msfstudy.bib
+biblio-style:
+header-includes:
+- \usepackage{geometry}
+- \usepackage{fancyhdr} 
+- \usepackage{indentfirst}
+- \usepackage{graphicx}
+- \usepackage{subfigure}
+- \usepackage{amsmath}
+- \usepackage{listings}
+- \usepackage{tikz}
+- \usetikzlibrary{matrix}
+---
+
+\vspace{0.25in}
+
+
+
+# Overview
+
+This document produces an overview of a set of candidate methods to account for mark-selective fisheries (MSF) in the calculations of calendar year exploitation rates (CYER) for the Chinook Technical Committee (CTC) indicator stocks. 
+
+The methods are divided into two major categories: single index tag (SIT) and double index tag (DIT) methods. 
+
+The list of methods studied in this documet are shown below:
+ -  SIT 1: $\lambda_{a}$ is estimating at spawning by age
+ -  SIT 2: $\lambda_{a}$ is estimating at spawning by age  updated after successive fisheries
+ -  SIT 3: $\lambda$ is estimated at release
+ -  SIT 4: $\lambda$ is estimated at release and updated after successive fisheries
+ -  SIT 5: $\lambda$ estimated from total exploitation rate and escapement and updated after successive fisheries 
+
+  
+# Global inputs
+
+
+The global inputa for the simulatios shown in this study is based on a sigle year of data and daat is simulated without any observation or process error. The Simulated data produces based on the `create_example_input()` and the `simpop()` mimics the data produced on the 'MSF Methods Beta' excel spreadsheet. 
+
+```{r tidy = TRUE, message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
+library("msfmethods")
+mydata <- create_example_input()
+example_dat <- simpop(mydata) 
+
+```
+
+# SIT 1 
+
+The first single index tagging method assumes that the ratio between unmarked and marked recoveries can only be updated at the escapement level. 
+
+- Assume discard mortality scalar is known
+- Assume catch is known without error
+- Assume Mark-Selective Fishery Release Mortality Rate is known
+
+```{r tidy = TRUE, message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
+
+example_sit1 <- sit1(example_dat)
+
+```
+
+# SIT 2 
+
+The second single index tagging method assumes that the ratio between unmarked and marked recoveries can only be updated at the escapement level and after each terminal fisheries.  
+
+- Assume discard mortality scalar is known
+- Assume catch is known without error
+- Assume Mark-Selective Fishery Release Mortality Rate is known
+
+
+```{r tidy = TRUE, message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
+
+#example_sit2 <- sit2(mydata) 
+
+
+```
+
+## SIT 3
+
+## SIT 4
+
+## SIT 5
