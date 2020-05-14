@@ -299,7 +299,7 @@ sit1 <- function(simdata) {
     }
 
 
-    a <- list(data = exdata,
+    a <- list(data = simdata,
     simulated = list(Anot = Anot, 
         A = A,
         TM = TM,
@@ -316,7 +316,7 @@ sit1 <- function(simdata) {
         hre = hre)
         )
 
-    return(e)
+    return(a)
     })
 }
 
@@ -444,10 +444,10 @@ sit2 <- function(simdata) {
             #note this difference with simulated data
             hre[[n]][1:length(g),a] <- TCe[[n]][1:length(g),a]/Ne[n,a]
         }
-    }})
+    }
 
 
-    a <- list(data = exdata,
+    a <- list(data = simdata,
     simulated = list(Anot = Anot, 
         A = A,
         TM = TM,
@@ -463,8 +463,8 @@ sit2 <- function(simdata) {
         Tmate = Tmate, 
         hre = hre)
         )
-
-    return(e)
+    return(a)
+    })
 }
 
 

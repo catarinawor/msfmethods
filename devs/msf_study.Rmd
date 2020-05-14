@@ -84,7 +84,7 @@ The second single index tagging method assumes that the ratio between unmarked a
 
 ```{r tidy = TRUE, message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 
-#example_sit2 <- sit2(mydata) 
+example_sit2 <- sit2(example_dat) 
 
 
 ```

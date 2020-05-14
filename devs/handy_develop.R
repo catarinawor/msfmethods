@@ -20,4 +20,3 @@ system("Rcmd.exe INSTALL --preclean --no-multiarch --with-keep.source C:/Users/w
 
 rmarkdown::render("msf_study.Rmd")
 
-rmarkdown::render("ex.Rmd")
