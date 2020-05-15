@@ -71,6 +71,11 @@ The first single index tagging method assumes that the ratio between unmarked an
 
 example_sit1 <- sit1(example_dat)
 
+
+#example_sit1$estimated$hre
+#example_sit1$data$hru
+
+
 ```
 
 # SIT 2 
@@ -85,6 +90,9 @@ The second single index tagging method assumes that the ratio between unmarked a
 ```{r tidy = TRUE, message = FALSE, warning = FALSE, error = FALSE, include = FALSE}
 
 example_sit2 <- sit2(example_dat) 
+
+#example_sit2$estimated$hre
+#example_sit2$data$hru
 
 
 ```

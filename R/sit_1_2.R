@@ -117,13 +117,14 @@ simpop <- function(exdata) {
     hru <- matrix(NA, ncol=nage, nrow=nfisheries, byrow=T)
     lambda <- matrix(NA, ncol=nage, nrow=nfisheries+1, byrow=T)
     escapement <- matrix(NA, ncol=nage, nrow=2)
+    hrm <- hr
 
     #loop over ages
     for(a in seq_len(nage)){
         #loop over 2 groups marked and unmarked
         for(n in 1:2){
         
-            #Ocean fisheries - ocean fiseries happen simulataneously but different proportions of the population are exposed to different set of  oceanfisheries
+            #Ocean fisheries - ocean fisheries happen simulataneously but different proportions of the population are exposed to different set of  oceanfisheries
             for(i in seq_along(g)){
 
                 if(a==1){
@@ -146,8 +147,9 @@ simpop <- function(exdata) {
                                  A[[n]][i,a] *hr[i,a]*msfF[i,a],
                                  A[[n]][i,a] *hr[i,a])
                     TD[[n]][i,a] <- A[[n]][i,a]*hr[i,a]*dsc[i,a]
-                    hru[i,a] <-  TC[[n]][i,a]/A[[n]][i,a]
+                    
                     lambda[i,a] <- A[[2]][i,a]/A[[1]][i,a]
+
                 }
                
                 Tmat[[n]][i,a] <- (A[[n]][i,a] - TC[[n]][i,a] - TD[[n]][i,a])* pa[a]
@@ -183,10 +185,14 @@ simpop <- function(exdata) {
     
         lambda[j+1,a] <- escapement[2,a]/escapement[1,a]
     }
-
+    hrm[1,] <- TC[[1]][1,]/(A[[1]][1,]+A[[1]][2,])
+    hrm[2,] <- TC[[1]][2,]/(A[[1]][1,]+A[[1]][2,])
+    hru[1,] <- TC[[2]][1,]/(A[[2]][1,]+A[[2]][2,])
+    hru[2,] <- TC[[2]][2,]/(A[[2]][1,]+A[[2]][2,])
     
     a <- append(exdata, list(lambda=lambda,
         hru=hru,
+        hrm=hrm,
         escapement = escapement,
         Anot = Anot, 
         A = A,
