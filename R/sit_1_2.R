@@ -429,7 +429,6 @@ sit2 <- function(simdata) {
                     TCe[[n]][1:length(g),a]*dsc[1:length(g),a])
             }
     
-            #parei aqui
             if(a==nage){
                 Ne[n,a] <- Ae[[n]][length(g)+1,a] + 
                 sum(TCe[[n]][1:length(g),a]) + 
