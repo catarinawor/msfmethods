@@ -91,9 +91,20 @@ The second single index tagging method assumes that the ratio between unmarked a
 
 example_sit2 <- sit2(example_dat) 
 
+
 #example_sit2$estimated$hre
 #example_sit2$data$hru
-
+#names(example_sit2$data)
+#example_sit2$data$TC
+#example_sit2$data$msfF
+#example_sit2$data$dsc
+#example_sit2$estimated$TCe
+#example_sit2$estimated$TDe
+#example_sit2$estimated$Ne
+#names(example_sit2$estimated)
+#example_sit2$estimated$Ae
+#example_sit2$estimated$hre
+#example_sit2$estimated$lambdae
 
 ```
 

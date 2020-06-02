@@ -411,7 +411,9 @@ sit2 <- function(simdata) {
                     TDe[[n]][j,a] <- ifelse(msf_flag[j,a],
                                      dsc[j,a]*TCe[[n]][j,a]/msfF[j,a] ,
                                      dsc[j,a]*TCe[[n]][j,a])
+                    hre[[n]][j,a] <- TCe[[n]][j,a]/Ae[[n]][j,a]
                     lambdae[j,a] <- Ae[[n]][j,a]/Ae[[n-1]][j,a]
+                    #browser()
                 }  
             }
 
@@ -419,11 +421,11 @@ sit2 <- function(simdata) {
             lambdae[1:length(g),a] <- lambdae[length(g) + 1,a]
             if(n==1){
                 TCe[[n]][1:length(g),a] <- TC[[n]][1:length(g),a]
-                TDe[[n]][1:length(g),a] <- TCe[[n]][1:length(g),a]*dsc[j,a]
+                TDe[[n]][1:length(g),a] <- TCe[[n]][1:length(g),a]*dsc[1:length(g),a]
             }else{
                 TCe[[n]][1:length(g),a] <- ifelse(msf_flag[1:length(g),a],
-                    lambdae[1:length(g),a]*msfF[1:length(g),a]*TCe[[n]][1:length(g),a],
-                    lambdae[1:length(g),a]*TCe[[n]][1:length(g),a])
+                    lambdae[1:length(g),a]*msfF[1:length(g),a]*TCe[[n-1]][1:length(g),a],
+                    lambdae[1:length(g),a]*TCe[[n-1]][1:length(g),a])
                 TDe[[n]][1:length(g),a] <- ifelse(msf_flag[1:length(g),a],
                     TCe[[n]][1:length(g),a]/msfF[1:length(g),a]*dsc[1:length(g),a],
                     TCe[[n]][1:length(g),a]*dsc[1:length(g),a])
@@ -466,7 +468,9 @@ sit2 <- function(simdata) {
         TCe = TCe,
         TDe = TDe,
         Tmate = Tmate, 
-        hre = hre)
+        hre = hre,
+        lambdae = lambdae 
+        )
         )
     return(a)
     })
